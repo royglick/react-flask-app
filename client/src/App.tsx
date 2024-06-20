@@ -2,21 +2,19 @@ import { useEffect, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import axios from 'axios'
 
 function App() {
   const [count, setCount] = useState(0)
   const [time, setTime] = useState(0)
 
   useEffect(() => {
-    fetch('http://localhost:5000/api/time',{ method: 'get', mode: 'cors' })
+
+    axios.get('http://localhost:5000/api/time')
     .then((res) => {
-      console.log(res.json());
-      return res.json();
-    })
-    .then((data) => {
-      console.log(data);
-      setTime(data)})
-    ;
+      console.log(res.data)
+      setTime(res.data)
+      })
   }, []);
 
   return (
