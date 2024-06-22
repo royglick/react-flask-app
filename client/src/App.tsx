@@ -4,16 +4,25 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import axios from 'axios'
 
+switch(process.env.NODE_ENV) {
+  case 'production':
+    axios.defaults.baseURL = 'http://roy-glick.com:5000';
+    break;
+  case 'development':
+    axios.defaults.baseURL = 'http://localhost:5001';
+    break;
+}
+
 function App() {
   const [count, setCount] = useState(0)
-  const [time, setTime] = useState(0)
+  const [time, setTime] = useState('s')
 
   useEffect(() => {
 
-    axios.get('http://localhost:5000/api/time')
+    axios.get('/api/time')
     .then((res) => {
       console.log(res.data)
-      setTime(res.data)
+      setTime(res.data.time)
       })
   }, []);
 
