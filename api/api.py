@@ -1,22 +1,22 @@
 import time
 from flask import Flask, jsonify
-from flask_cors import CORS, cross_origin
+
+# from flask_cors import CORS, cross_origin
 
 app = Flask(__name__)
-CORS(app, support_credentials=True, origins={r"*": {"origins": "*"}})
+# CORS(app, support_credentials=True, origins={r"*": {"origins": "*"}})
 
 
-# def add_cors_headers(response):
-#     response.headers["Access-Control-Allow-Origin"] = "*"  # Adjust as needed
-#     response.headers["Access-Control-Allow-Credentials"] = "true"
-#     response.headers["Access-Control-Allow-Headers"] = "Content-Type, Authorization"
-#     response.headers["Access-Control-Allow-Methods"] = "GET, POST, PUT, DELETE, OPTIONS"
-#     return response
+def add_cors_headers(response):
+    response.headers.add("Access-Control-Allow-Origin", "*")
+    response.headers.add("Access-Control-Allow-Headers", "Content-Type,Authorization")
+    response.headers.add("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE,OPTIONS")
+    return response
 
 
-# @app.after_request
-# def after_request(response):
-#     return add_cors_headers(response)
+@app.after_request
+def after_request(response):
+    return add_cors_headers(response)
 
 
 @app.route("/api/time")
@@ -32,3 +32,28 @@ def not_found(e):
 
 if __name__ == "__main__":
     app.run(debug=True)
+
+# from flask import Flask
+
+# app = Flask(__name__)
+
+
+# def add_cors_headers(response):
+#     response.headers.add("Access-Control-Allow-Origin", "*")
+#     response.headers.add("Access-Control-Allow-Headers", "Content-Type,Authorization")
+#     response.headers.add("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE,OPTIONS")
+#     return response
+
+
+# @app.after_request
+# def after_request(response):
+#     return add_cors_headers(response)
+
+
+# @app.route("/api/time")
+# def home():
+#     return "Hello, Flask!"
+
+
+# if __name__ == "__main__":
+#     app.run(debug=True, port=8000)
