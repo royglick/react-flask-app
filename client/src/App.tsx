@@ -6,7 +6,7 @@ import axios from 'axios'
 
 switch(process.env.NODE_ENV) {
   case 'production':
-    axios.defaults.baseURL = 'http://roy-glick.com:5000';
+    axios.defaults.baseURL = 'http://roy-glick.com';
     break;
   case 'development':
     axios.defaults.baseURL = 'http://localhost:5001';
