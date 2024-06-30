@@ -15,7 +15,8 @@
     "p5": "^1.9.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "toxiclibsjs": "^0.3.3"
+    "toxiclibsjs": "^0.3.3",
+    "vite-require": "^0.2.3"
   },
   "browserslist": {
     "production": [
