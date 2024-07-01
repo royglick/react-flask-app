@@ -16,10 +16,6 @@ const P5LiquidWords: React.FC<Props> = ({
   word,
 }) => {
   const canvasContainer = useRef<HTMLDivElement>(null);
-
-  // const [hammer, setHammer] = useState<Hammer>()
-  // const [letters, setLetters] = React.useState<SoftLetter[]>([])
-  // const [font, setFont] = useState<p5.Font>()
   useEffect(() => {
     let hammer: Hammer;
     let font: p5.Font;
@@ -28,15 +24,13 @@ const P5LiquidWords: React.FC<Props> = ({
 
     const sketch = (p: p5) => {
       p.preload = () => {
-        font = p.loadFont("/HussarBoldSupercondensed-AW7D.otf");
+        font = p.loadFont("/Venicelacorla-8M0Zz.otf");
       };
 
       p.setup = () => {
         if (!font || !canvasContainer.current) return;
-        // p.createCanvas(width, height).parent(canvasContainer.current!);
         p.createCanvas(width, height);
-
-        // Initialize Toxiclibs physics world with gravity
+        // p.createCanvas(width, height).parent("p5div");
         physics = new toxi.physics2d.VerletPhysics2D();
         // add gravity handler
         // const gravity = new toxi.geom.Vec2D(0, 1);
@@ -55,14 +49,14 @@ const P5LiquidWords: React.FC<Props> = ({
         );
         let fontSize = 100 + width / word.length;
         p.textSize(fontSize);
-        let x = 30;
+        let x = 70;
         for (let char of word) {
           let letter = new SoftLetter({
             font: font,
             fontSize,
             char,
             x: x,
-            y: p.random(fontSize, height),
+            y: 400,
             p5: p,
             physics: physics,
           });
@@ -90,7 +84,10 @@ const P5LiquidWords: React.FC<Props> = ({
       };
     };
 
-    const p5Instance = new p5(sketch);
+    const p5Instance = new p5(
+      sketch,
+      document.getElementById("p5liquidiv") || undefined
+    );
 
     // Cleanup on component unmount
     return () => {

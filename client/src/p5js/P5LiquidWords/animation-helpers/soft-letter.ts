@@ -36,7 +36,7 @@ export class SoftLetter {
     this.font = font;
     this.p5 = p5;
     this.fontSize = fontSize;
-    this.letterForce = 0.005;
+    this.letterForce = 0.004;
     this.physics = physics;
     this.initBodies();
   }
@@ -53,9 +53,10 @@ export class SoftLetter {
     );
 
     for (let pt of path) {
+      let vec = p5.Vector.fromAngle(this.p5.random(this.p5.TWO_PI)).mult(10);
       let particle = createParticle({
-        x: pt.x + this.p5.randomGaussian(0, 30),
-        y: pt.y + this.p5.randomGaussian(0, 20),
+        x: pt.x + vec.x,
+        y: pt.y + vec.y,
         physics: this.physics,
       });
       this.particles.push(particle);
