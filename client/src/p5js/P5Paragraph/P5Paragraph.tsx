@@ -24,7 +24,7 @@ const P5Paragraph: React.FC<P5ParagraphProps> = ({
       function buildSentence(x: number, y: number, sentence: string) {
         for (let letter of sentence) {
           let angle = p.random(p.TWO_PI);
-          let vec = p5.Vector.fromAngle(angle).mult(30);
+          let vec = p5.Vector.fromAngle(angle).mult(50);
           letters.push(
             new Letter({
               initialx: x + vec.x,
@@ -46,12 +46,13 @@ const P5Paragraph: React.FC<P5ParagraphProps> = ({
         if (!canvasContainer.current) return;
         p.createCanvas(width, height);
         p.background(255);
-        p.textFont("Helvetica");
+        // p.textFont("Helvetica");
+        p.textFont("Georgia");
         p.textSize(fontSize);
 
-        buildSentence(100, 100, first_sentence);
-        buildSentence(200, 150, second_sentence);
-        buildSentence(700, 200, third_sentence);
+        buildSentence(100, 90, first_sentence);
+        buildSentence(200, 140, second_sentence);
+        buildSentence(700, 190, third_sentence);
       };
 
       p.draw = () => {

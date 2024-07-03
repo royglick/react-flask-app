@@ -1,68 +1,141 @@
-/* :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+:root {
+  --primary-color-1: #708681;
+  --primary-color-2: #203a4c;
+  --primary-color-3: #33323d;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  --secondary-color-1: #fafafa;
+  --secondary-color-2: #eaeaeb;
+  --secondary-color-3: #f43030;
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+  --text-color-normal: var(--primary-color-3);
+  --text-color-hover: var(--primary-color-1);
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
+  --p-button-color-normal: var(--primary-color-2);
+  --p-button-color-hover: var(--primary-color-1);
+  --p-button-color-disable: #d2d8db;
 
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  --color-error: var(--secondary-color-3);
+
+  --main-bg-color: var(--secondary-color-1);
+  --secondary-bg-color: var(--primary-color-3);
+
+  --mobile-hor-padding: 8.533333%;
+  --tablet-hor-padding: 5.078125%;
+  --desktop-hor-padding:7%;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+/* Box sizing rules */
+/* *,
+*::before,
+*::after {
+  box-sizing: border-box;
 } */
+
+/* Remove default margin */
+/* * {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+} */
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+/* ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+} */
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* html, */
+/* body {
+  height: 100%;
+  background-color: var(--main-bg-color);
+} */
+
+/* Set core body defaults */
+body {
+  text-rendering: optimizeSpeed;
+  line-height: 2;
+}
+
+/* A elements that don't have a class get default styles */
+/* a:not([class]) {
+  text-decoration-skip-ink: auto;
+} */
+
+/* Make images easier to work with */
+img,
+picture,
+svg {
+  max-width: 100%;
+  display: block;
+}
+
+/* Utilities */
+.h1 {
+  font-family: "Ibarra Real Nova";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 50px;
+  line-height: 50px;
+  letter-spacing: -0.45px;
+
+  color: #33323d;
+
+  text-align: start;
+}
+
+.h2 {
+  font-family: "Ibarra Real Nova";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 42px;
+  letter-spacing: -0.36px;
+
+  color: #33323d;
+  text-align: start;
+}
+
+.h3 {
+  font-family: "Ibarra Real Nova";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 36px;
+  letter-spacing: -0.29px;
+
+  color: #33323d;
+}
+
+.body-1 {
+  font-family: "Public Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 30px;
+
+  color: #33323d;
+}
+
+.body-2 {
+  font-family: "Public Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 30px;
+
+  color: #33323d;
+}
+
+
+/* Desktop Size  */
+@media (min-width: 1440px) {
+  .container {
+    padding-left: var(--desktop-hor-padding);
+    padding-right: var(--desktop-hor-padding);
+  }
+}

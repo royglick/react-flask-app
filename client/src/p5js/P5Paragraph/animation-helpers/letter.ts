@@ -47,7 +47,7 @@ export default class Letter {
       this.p5.mouseX,
       this.p5.mouseY
     );
-    if (d < 200) {
+    if (d < 240) {
       this.x = this.p5.lerp(this.x, this.finalx, 0.1);
       this.y = this.p5.lerp(this.y, this.finaly, 0.1);
     } else {

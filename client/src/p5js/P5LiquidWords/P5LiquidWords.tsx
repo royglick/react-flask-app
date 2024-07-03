@@ -56,7 +56,7 @@ const P5LiquidWords: React.FC<Props> = ({
             fontSize,
             char,
             x: x,
-            y: 400,
+            y: 350,
             p5: p,
             physics: physics,
           });
@@ -96,6 +96,7 @@ const P5LiquidWords: React.FC<Props> = ({
   }, []);
 
   return <div ref={canvasContainer}></div>;
+  // return;
 };
 
 export default P5LiquidWords;
