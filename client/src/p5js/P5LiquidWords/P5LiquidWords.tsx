@@ -8,15 +8,12 @@ const toxi = require("toxiclibsjs");
 type Props = {
   height?: number;
   width?: number;
-  word: string;
 };
-const P5LiquidWords: React.FC<Props> = ({
-  height = 400,
-  width = 400,
-  word,
-}) => {
+const P5LiquidWords: React.FC<Props> = ({ height = 400, width = 400 }) => {
   const canvasContainer = useRef<HTMLDivElement>(null);
   useEffect(() => {
+    let word = "HI";
+    let word2 = "THERE";
     let hammer: Hammer;
     let font: p5.Font;
     let _letters: SoftLetter[] = [];
@@ -47,7 +44,7 @@ const P5LiquidWords: React.FC<Props> = ({
         physics.addBehavior(
           new toxi.physics2d.behaviors.AttractionBehavior(hammer, 80, -6, 0.1)
         );
-        let fontSize = 100 + width / word.length;
+        let fontSize = 400;
         p.textSize(fontSize);
         let x = 70;
         for (let char of word) {
@@ -57,6 +54,20 @@ const P5LiquidWords: React.FC<Props> = ({
             char,
             x: x,
             y: 350,
+            p5: p,
+            physics: physics,
+          });
+          _letters.push(letter);
+          x += p.textWidth(char);
+        }
+        x = 70;
+        for (let char of word2) {
+          let letter = new SoftLetter({
+            font: font,
+            fontSize,
+            char,
+            x: x,
+            y: 680,
             p5: p,
             physics: physics,
           });

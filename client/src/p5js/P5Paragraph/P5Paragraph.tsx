@@ -16,7 +16,7 @@ const P5Paragraph: React.FC<P5ParagraphProps> = ({
     const sketch = (p: p5) => {
       let first_sentence = "Hi! I'm Roy Glick,";
       let second_sentence =
-        "I'm a software developer, a musician, and an aspiring creative coder.";
+        "I'm a software developer, a musician, and a creative coding enthusiast.";
       let third_sentence = "Scroll down to see some projects i've made. ✨";
       let fontSize = 25;
       let letters: Letter[] = [];

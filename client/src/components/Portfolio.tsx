@@ -2,8 +2,9 @@
 // import { useEffect } from "react";
 import Project from "./Project";
 
-import manageDesktop from "/Users/royglick/Project/react-flask-app/client/public/image-portfolio-bookmark.jpg";
-// import bookmarkDesktop from "./mockimage.jpg";
+import webThereminDesktop from "/Users/royglick/Project/react-flask-app/client/public/WebTheremin.png";
+import fabricDesktop from "/Users/royglick/Project/react-flask-app/client/public/fabric-img.png";
+
 // import insureDesktop from "./mockimage.jpg";
 // import fyloDesktop from "./mockimage.jpg";
 
@@ -16,23 +17,24 @@ export default function Portfolio(): JSX.Element {
     // <main className={styles.main}>
     <>
       <Project.Right
-        title="Manage"
+        title="Web Theremin"
         description="
-        This project required me to build a fully responsive landing page to the designs provided. 
-        I used HTML5, along with CSS Grid and JavaScript for the areas that required interactivity,
-        such as the testimonial slider.
+        A web browser instrument using hand recognition algorithm. 
+      You can start playing sound by touching your thumb with your index finger, and move
+      youre hand up and down in order to control the instrument's pitch.
         "
-        screenshots={manageDesktop}
-        param="manage"
+        screenshots={webThereminDesktop}
+        link="https://royglick.github.io/web-theremin/"
       />
       <Project.Left
-        title="Bookmark"
+        title="Ideal Fabric"
         description="
-        This project required me to build a fully responsive landing page to the designs provided.
-        I used HTML5, along with CSS Grid and JavaScript for the areas that required interactivity,
-        such as the features section."
-        screenshots={manageDesktop}
-        param="bookmark"
+        Expiremanting with toxiclibs physics engine library. It's a grid of springs connected
+        to each other, creating a simulation of an ideal fabric with no friction or 
+        inner collisions. The user can control several parameters such as gravity, spring's strength,
+        and ocillations in order to create different patterns."
+        screenshots={fabricDesktop}
+        link="https://royglick.github.io/p5js-cloth-simulation/"
       />
     </>
     // </main>

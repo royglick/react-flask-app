@@ -48,15 +48,15 @@ export class SoftLetter {
       this.y,
       this.fontSize,
       {
-        sampleFactor: 0.7,
+        sampleFactor: 0.7, //0.7
       }
     );
 
     for (let pt of path) {
-      let vec = p5.Vector.fromAngle(this.p5.random(this.p5.TWO_PI)).mult(2);
+      // let vec = p5.Vector.fromAngle(this.p5.random(this.p5.TWO_PI)).mult(2); // initial random position
       let particle = createParticle({
-        x: pt.x + vec.x,
-        y: pt.y + vec.y,
+        x: pt.x,
+        y: pt.y,
         physics: this.physics,
       });
       this.particles.push(particle);
