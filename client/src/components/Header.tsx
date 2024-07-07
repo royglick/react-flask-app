@@ -3,8 +3,18 @@ import { Link } from "react-router-dom";
 import github from "../../public/github.svg";
 import instagram from "../../public/instagram.svg";
 import linkedin from "../../public/linkedin.svg";
+import axios from "axios";
 
 export default function Header(): JSX.Element {
+  const downloadResume = () => {
+    const pdfUrl = axios.defaults.baseURL + "/download/Roy_Glick.pdf";
+    const link = document.createElement("a");
+    link.href = pdfUrl;
+    link.download = "Roy_Glick.pdf"; // specify the filename
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
   return (
     <header className={styles.header}>
       <div className={`container ${styles.headerContainer}`}>
@@ -12,8 +22,8 @@ export default function Header(): JSX.Element {
           <Link to="/" className={styles.item}>
             HOME
           </Link>
-          <Link to="/" className={styles.item}>
-            RESUME
+          <Link to="/" className={styles.item} onClick={downloadResume}>
+            DOWNLOAD RESUME
           </Link>
           {/* <Link to="/" className={styles.item}>
             CONTACT ME

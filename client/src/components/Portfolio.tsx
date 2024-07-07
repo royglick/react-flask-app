@@ -2,8 +2,8 @@
 // import { useEffect } from "react";
 import Project from "./Project";
 
-import webThereminDesktop from "/Users/royglick/Project/react-flask-app/client/public/WebTheremin.png";
-import fabricDesktop from "/Users/royglick/Project/react-flask-app/client/public/fabric-img.png";
+import webThereminDesktop from "../../public/WebTheremin.png";
+import fabricDesktop from "../../public/fabric-img.png";
 
 // import insureDesktop from "./mockimage.jpg";
 // import fyloDesktop from "./mockimage.jpg";

@@ -36,7 +36,7 @@ export class SoftLetter {
     this.font = font;
     this.p5 = p5;
     this.fontSize = fontSize;
-    this.letterForce = 0.004; //0.004
+    this.letterForce = 0.005; //0.004
     this.physics = physics;
     this.initBodies();
   }
@@ -48,7 +48,7 @@ export class SoftLetter {
       this.y,
       this.fontSize,
       {
-        sampleFactor: 0.7, //0.7
+        sampleFactor: 0.6, //0.7
       }
     );
 

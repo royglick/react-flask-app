@@ -1,5 +1,5 @@
 import time
-from flask import Flask, jsonify
+from flask import Flask, jsonify, send_from_directory, abort
 
 # from flask_cors import CORS, cross_origin
 
@@ -28,6 +28,19 @@ def get_current_time():
 @app.errorhandler(404)
 def not_found(e):
     return app.send_static_file("index.html")
+
+
+@app.route("/download/<filename>", methods=["GET"])
+def download_file(filename):
+    try:
+        # Define the directory containing your files
+        directory = "./files"
+        # Safely join the directory and filename
+        # filepath = safe_join(directory, filename)
+        # Send the file from the directory
+        return send_from_directory(directory, filename, as_attachment=True)
+    except FileNotFoundError:
+        abort(404)
 
 
 if __name__ == "__main__":
