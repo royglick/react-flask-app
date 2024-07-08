@@ -30,7 +30,7 @@ def not_found(e):
     return app.send_static_file("index.html")
 
 
-@app.route("/download/<filename>", methods=["GET"])
+@app.route("/api/download/<filename>", methods=["GET"])
 def download_file(filename):
     try:
         # Define the directory containing your files
@@ -45,28 +45,3 @@ def download_file(filename):
 
 if __name__ == "__main__":
     app.run(debug=True)
-
-# from flask import Flask
-
-# app = Flask(__name__)
-
-
-# def add_cors_headers(response):
-#     response.headers.add("Access-Control-Allow-Origin", "*")
-#     response.headers.add("Access-Control-Allow-Headers", "Content-Type,Authorization")
-#     response.headers.add("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE,OPTIONS")
-#     return response
-
-
-# @app.after_request
-# def after_request(response):
-#     return add_cors_headers(response)
-
-
-# @app.route("/api/time")
-# def home():
-#     return "Hello, Flask!"
-
-
-# if __name__ == "__main__":
-#     app.run(debug=True, port=8000)
