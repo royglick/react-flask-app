@@ -7,7 +7,7 @@ import axios from "axios";
 
 export default function Header(): JSX.Element {
   const downloadResume = () => {
-    const pdfUrl = axios.defaults.baseURL + "/download/Roy_Glick.pdf";
+    const pdfUrl = axios.defaults.baseURL + "/api/download/Roy_Glick.pdf";
     const link = document.createElement("a");
     link.href = pdfUrl;
     link.download = "Roy_Glick.pdf"; // specify the filename
