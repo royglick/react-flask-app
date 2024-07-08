@@ -36,7 +36,7 @@ export class SoftLetter {
     this.font = font;
     this.p5 = p5;
     this.fontSize = fontSize;
-    this.letterForce = 0.005; //0.004
+    this.letterForce = 0.004; //0.004
     this.physics = physics;
     this.initBodies();
   }
@@ -85,12 +85,22 @@ export class SoftLetter {
   returnToInitialPositions() {
     for (let i = 0; i < this.particles.length; i++) {
       let particle = this.particles[i];
-      let initialPosition = this.initialPositions[i];
-      let dx = initialPosition.x - particle.x;
-      let dy = initialPosition.y - particle.y;
-      let distance = this.p5.sqrt(dx * dx + dy * dy);
+      let particleVec = new p5.Vector(particle.x, particle.y);
+      let initialPositionVec = new p5.Vector(
+        this.initialPositions[i].x,
+        this.initialPositions[i].y
+      );
+
+      let desired = p5.Vector.sub(initialPositionVec, particleVec);
+      let distance = this.p5.sqrt(
+        desired.x * desired.x + desired.y * desired.y
+      );
+
       let forceMagnitude = this.letterForce * distance;
-      let force = new toxi.geom.Vec2D(dx * forceMagnitude, dy * forceMagnitude);
+      let force = new toxi.geom.Vec2D(
+        desired.x * forceMagnitude,
+        desired.y * forceMagnitude
+      );
       particle.addForce(force);
     }
   }
