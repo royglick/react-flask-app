@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from "react";
 import p5 from "p5";
 import "p5/lib/addons/p5.sound";
-const ml5 = require("ml5");
+// const ml5 = require("ml5");
 
 type Props = {
   height?: number;
@@ -24,7 +24,7 @@ const P5WebTheramin: React.FC<Props> = ({
   useEffect(() => {
     const sketch = (p: p5) => {
       p.preload = () => {
-        handPose = ml5.handPose();
+        // handPose = ml5.handPose();
       };
 
       p.setup = () => {
