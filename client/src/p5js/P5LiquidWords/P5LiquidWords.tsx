@@ -46,8 +46,7 @@ const P5LiquidWords: React.FC<Props> = ({ height = 400, width = 400 }) => {
           physics,
         });
         physics.addBehavior(
-          //new toxi.physics2d.behaviors.AttractionBehavior(hammer, 80, -6, 0.1)
-          new toxi.physics2d.behaviors.AttractionBehavior(hammer, 80, -6, 0.1)
+          new toxi.physics2d.behaviors.AttractionBehavior(hammer, 80, -2, 0.1)
         );
         let fontSize = 400;
         p.textSize(fontSize);
