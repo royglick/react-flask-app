@@ -21,7 +21,7 @@ const Home: React.FC = () => {
     <div className="App">
       <Header />
       <div id="p5liquidiv">
-        <P5LiquidWords width={window.innerWidth} height={700} />
+        <P5LiquidWords width={window.innerWidth} height={740} />
       </div>
       <div id="p5sentencediv">
         <P5Paragraph width={window.innerWidth} height={300} />

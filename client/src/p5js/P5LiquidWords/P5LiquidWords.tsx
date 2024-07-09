@@ -18,6 +18,7 @@ const P5LiquidWords: React.FC<Props> = ({ height = 400, width = 400 }) => {
     let font: p5.Font;
     let _letters: SoftLetter[] = [];
     let physics: any;
+    let dragging = false;
 
     const sketch = (p: p5) => {
       p.preload = () => {
@@ -30,18 +31,22 @@ const P5LiquidWords: React.FC<Props> = ({ height = 400, width = 400 }) => {
         // p.createCanvas(width, height).parent("p5div");
         physics = new toxi.physics2d.VerletPhysics2D();
         // add gravity handler
-        // const gravity = new toxi.geom.Vec2D(0, 1);
-        // const  gb = new toxi.physics2d.behaviors.GravityBehavior(gravity);
+        // const gravity = new toxi.geom.Vec2D(0, 0.11);
+        // const gb = new toxi.physics2d.behaviors.GravityBehavior(gravity);
         // physics.addBehavior(gb);
-        physics.setWorldBounds(new toxi.geom.Rect(0, 0, width, height));
+
+        physics.setWorldBounds(
+          new toxi.geom.Rect(40, 40, width - 80, height - 80)
+        );
         hammer = new Hammer({
-          x: p.mouseX,
-          y: p.mouseY,
+          x: 450,
+          y: 300,
           r: 40,
           p5: p,
           physics,
         });
         physics.addBehavior(
+          //new toxi.physics2d.behaviors.AttractionBehavior(hammer, 80, -6, 0.1)
           new toxi.physics2d.behaviors.AttractionBehavior(hammer, 80, -6, 0.1)
         );
         let fontSize = 400;
@@ -85,13 +90,22 @@ const P5LiquidWords: React.FC<Props> = ({ height = 400, width = 400 }) => {
           letter.display();
           letter.returnToInitialPositions();
         }
+        if (dragging) {
+          hammer.x = p.mouseX;
+          hammer.y = p.mouseY;
+        }
 
         hammer.show();
-        hammer.lock();
       };
 
-      p.mouseMoved = () => {
-        hammer && hammer.set(p.mouseX, p.mouseY);
+      p.mousePressed = () => {
+        if (p.dist(hammer.x, hammer.y, p.mouseX, p.mouseY) < hammer.r) {
+          dragging = true;
+        }
+        // hammer && hammer.set(p.mouseX, p.mouseY);
+      };
+      p.mouseReleased = () => {
+        dragging = false;
       };
     };
 
