@@ -96,7 +96,12 @@ export class SoftLetter {
         desired.x * desired.x + desired.y * desired.y
       );
 
-      let forceMagnitude = this.letterForce * distance;
+      let mult = 1;
+      // if (distance < 10) {
+      //   mult = 20;
+      // }
+
+      let forceMagnitude = this.letterForce * distance * mult;
       let force = new toxi.geom.Vec2D(
         desired.x * forceMagnitude,
         desired.y * forceMagnitude

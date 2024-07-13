@@ -15,16 +15,16 @@ const P5Paragraph: React.FC<P5ParagraphProps> = ({
   useEffect(() => {
     const sketch = (p: p5) => {
       let first_sentence = "Hi! I'm Roy Glick,";
-      let second_sentence =
-        "I'm a software developer, a musician, and a creative coding enthusiast.";
-      let third_sentence = "Scroll down to see some projects i've made. ✨";
-      let fontSize = 25;
+      let second_sentence = "I'm a software developer, a musician, ";
+      let third_sentence = "and a creative coding enthusiast.";
+      let fourth_sentence = "Scroll down to see some projects i've made. ✨";
+      let fontSize = 30;
       let letters: Letter[] = [];
 
       function buildSentence(x: number, y: number, sentence: string) {
         for (let letter of sentence) {
           let angle = p.random(p.TWO_PI);
-          let vec = p5.Vector.fromAngle(angle).mult(50);
+          let vec = p5.Vector.fromAngle(angle).mult(60);
           letters.push(
             new Letter({
               initialx: x + vec.x,
@@ -50,9 +50,10 @@ const P5Paragraph: React.FC<P5ParagraphProps> = ({
         p.textFont("Georgia");
         p.textSize(fontSize);
 
-        buildSentence(100, 90, first_sentence);
-        buildSentence(200, 140, second_sentence);
-        buildSentence(700, 190, third_sentence);
+        buildSentence(130, 80, first_sentence);
+        buildSentence(130, 130, second_sentence);
+        buildSentence(130, 180, third_sentence);
+        buildSentence(630, 300, fourth_sentence);
       };
 
       p.draw = () => {
@@ -61,8 +62,6 @@ const P5Paragraph: React.FC<P5ParagraphProps> = ({
           letter.show();
         }
       };
-
-      p.mouseMoved = () => {};
     };
 
     const p5Instance = new p5(

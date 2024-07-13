@@ -1,10 +1,19 @@
 import time
 from flask import Flask, jsonify, send_from_directory, abort
 
-# from flask_cors import CORS, cross_origin
+# from flask_sqlalchemy import SQLAlchemy
+
 
 app = Flask(__name__)
-# CORS(app, support_credentials=True, origins={r"*": {"origins": "*"}})
+
+
+# app.config["SQLALCHEMY_DATABASE_URI"] = (
+#     "postgresql://username:password@your-rds-endpoint:5432/your-database-name"
+# )
+# app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+
+# Create the SQLAlchemy db instance
+# db = SQLAlchemy(app)
 
 
 def add_cors_headers(response):

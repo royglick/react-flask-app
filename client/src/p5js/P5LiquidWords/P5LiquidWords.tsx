@@ -9,6 +9,13 @@ type Props = {
   height?: number;
   width?: number;
 };
+function scrollDown() {
+  window.scrollTo({
+    top: 800,
+    behavior: "smooth",
+  });
+}
+
 const P5LiquidWords: React.FC<Props> = ({ height = 400, width = 400 }) => {
   const canvasContainer = useRef<HTMLDivElement>(null);
   useEffect(() => {
@@ -19,6 +26,7 @@ const P5LiquidWords: React.FC<Props> = ({ height = 400, width = 400 }) => {
     let _letters: SoftLetter[] = [];
     let physics: any;
     let dragging = false;
+    let button: p5.Element;
 
     const sketch = (p: p5) => {
       p.preload = () => {
@@ -39,14 +47,14 @@ const P5LiquidWords: React.FC<Props> = ({ height = 400, width = 400 }) => {
           new toxi.geom.Rect(40, 40, width - 80, height - 80)
         );
         hammer = new Hammer({
-          x: 450,
-          y: 300,
+          x: 90,
+          y: 200,
           r: 40,
           p5: p,
           physics,
         });
+
         physics.addBehavior(
-          //new toxi.physics2d.behaviors.AttractionBehavior(hammer, 80, -2, 0.1)
           new toxi.physics2d.behaviors.AttractionBehavior(hammer, 80, -2, -0.03)
         );
         let fontSize = 400;
@@ -77,8 +85,18 @@ const P5LiquidWords: React.FC<Props> = ({ height = 400, width = 400 }) => {
             physics: physics,
           });
           _letters.push(letter);
-          x += p.textWidth(char);
+          if (char == "R" || char == "E") {
+            x += 220;
+          } else {
+            x += p.textWidth(char);
+          }
         }
+
+        button = p.createImg("./public/down-arrow.svg", "Scroll Down");
+        button.size(80, 50);
+        button.position(1300, 670);
+        button.mousePressed(scrollDown);
+        button.style("cursor", "pointer");
       };
 
       p.draw = () => {
@@ -102,7 +120,6 @@ const P5LiquidWords: React.FC<Props> = ({ height = 400, width = 400 }) => {
         if (p.dist(hammer.x, hammer.y, p.mouseX, p.mouseY) < hammer.r) {
           dragging = true;
         }
-        // hammer && hammer.set(p.mouseX, p.mouseY);
       };
       p.mouseReleased = () => {
         dragging = false;
@@ -121,7 +138,6 @@ const P5LiquidWords: React.FC<Props> = ({ height = 400, width = 400 }) => {
   }, []);
 
   return <div ref={canvasContainer}></div>;
-  // return;
 };
 
 export default P5LiquidWords;
