@@ -92,7 +92,7 @@ const P5LiquidWords: React.FC<Props> = ({ height = 400, width = 400 }) => {
           }
         }
 
-        button = p.createImg("./public/down-arrow.svg", "Scroll Down");
+        button = p.createImg("/down-arrow.svg", "Scroll Down");
         button.size(80, 50);
         button.position(1300, 670);
         button.mousePressed(scrollDown);
